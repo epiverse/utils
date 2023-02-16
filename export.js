@@ -19,9 +19,29 @@ function json2tsv(json){
     return json2csv(json,'\t')    
 }
 
+function csv2tbl(csv,sep=','){
+    return csv.split('\n').map(r=>{
+        return r.split(sep)
+    })    
+}
+
+function tsv2tbl(tsv){
+    return csv2tbl(tsv,'\t')
+}
+
+function unique(arr){
+    let obj={}
+    arr.forEach(a=>{
+        obj[a]=true
+    })
+    return Object.keys(obj)
+}
 
 export{
     hello,
     json2csv,
-    json2tsv
+    json2tsv,
+    csv2tbl,
+    tsv2tbl,
+    unique
 }
